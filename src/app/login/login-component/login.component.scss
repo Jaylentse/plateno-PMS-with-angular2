@@ -1,0 +1,92 @@
+@import '../../../assets/style/common.scss';
+.login_page {
+  @extend %full-page;
+  background: $bodyBgColor url('../../../assets/images/background.jpg') repeat 0 0;
+
+  /* 内容部分 */
+  .login_container {
+    position: fixed;
+    width: 1001px;
+    height: 431px;
+    background-color: $bodyBgColor;
+    @extend %position-center;
+
+    section {
+      float: left;
+      @extend %vertical-align-center;
+    }
+
+    /* 左侧选择班次部分 */
+    .login_shift {
+      width: 380px;
+      height: 210px;
+      padding: 0 80px;
+      /* 班次选项按钮 */
+      ul {
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        li {
+          float: left;
+          box-sizing: border-box;
+          width: 175px;
+          height: 50px;
+          padding-left: 20px;
+          color: $primary;
+          line-height: 48px;
+          border: 1px solid $primary;
+          @extend %border-radius;
+          cursor: pointer;
+          &.selected {
+            background-color: $primary;
+            color: $white;
+          }
+          i {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+
+    /* 中间分割线 */
+    .login_center_line {
+      width: 1px;
+      height: 313px;
+      background-color: $gray;
+    }
+
+    /* 右侧表单部分 */
+    .login_form {
+      width: 300px;
+      padding: 0 80px;
+
+      .login_logo {
+        margin-bottom: 35px;
+      }
+
+      form {
+        input {
+          display: block;
+          width: 300px;
+          height: 50px;
+          padding-right: 38px;
+          margin-bottom: 30px;
+        }
+        [name=user] {
+          background: url('../../../assets/images/login-username.png') no-repeat 270px center;
+        }
+        [name=pwd] {
+          background: url('../../../assets/images/login-password.png') no-repeat 270px center;
+        }
+        button {
+          width: 300px;
+          height: 50px;
+          @include letter-spacing(2em);
+        }
+
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+input[type=text] {
+  box-sizing: border-box;
+  width: $inputWidth;
+  height: $inputHeight;
+  border: $inputBorder;
+  padding-left: $inputTextIndent;
+  @extend %ellipsis-basic;
+  @extend %border-radius;
+}

@@ -1,0 +1,35 @@
+<div class="login_page">
+  <!-- 左上方faq、系统设置按钮组 -->
+  <aside class="system_btn_group">
+    <i class="btn-faq"></i>
+    <i class="btn-system-setting"></i>
+  </aside>
+  <main class="login_container">
+    <!-- 选择班次 -->
+    <section class="login_shift">
+      <ul>
+        <li *ngFor="let shift of shifts" [class.selected]="shift.selected" (click)="selectShift(shift)">
+          <i>{{shift.shiftCode}}</i><span>{{shift.shiftName}}</span>
+        </li>
+      </ul>
+    </section>
+    <!-- 中间分割线 -->
+    <section class="login_center_line"></section>
+    <!-- 填写工号、密码 -->
+    <section class="login_form">
+      <header class="login_logo">
+        <i class="icon-pms-logo"></i>
+      </header>
+      <main>
+        <form>
+          <input type="text" name="user" placeholder="请输入工号">
+          <input type="text" name="pwd" placeholder="密码">
+          <button>登录</button>
+        </form>
+      </main>
+      <footer>
+        <em></em>
+      </footer>
+    </section>
+  </main>
+</div>

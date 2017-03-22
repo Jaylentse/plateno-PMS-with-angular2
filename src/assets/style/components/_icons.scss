@@ -1,0 +1,56 @@
+/*
+* @description 生成小图标的预定义class
+*              注意图片格式为 { fileName.ext } fileName中不可带有.
+*              默认格式为png，{ $icons }变量中 png图片不需要写后缀名，其它格式必须带上后缀名
+*
+* @author Jaylen-Tse <jaylen.tse@platenogroup.com>
+*/
+
+// 要生成雪碧图的图片文件夹，注意最后不要加/
+$iconBaseUrl: 'assets/images/sprites';
+
+// icon的名字，无扩展名默认为png图片，非png图片必须带上扩展名，图片的文件名不允许存在.
+$icons: 'pms-logo',
+        'loading-background',
+        'loading-logo',
+        'loading-spinner';
+
+// 生成icon
+@mixin icon ($image-url) {
+  @if $image-url {
+    display: block;
+    width: width($image-url);
+    height: height($image-url);
+    background: url($image-url) no-repeat 0 0;
+  } @else {
+    display: none;
+  }
+}
+
+// 获取icon的文件名（如果存在扩展名则去掉扩展名）
+@function getIconName($iconFullName) {
+  $extNameIndex: str-index($iconFullName, '.');
+  @if($extNameIndex != null) {
+    @return str-slice($iconFullName, 1, $extNameIndex - 1);
+  } @else {
+    @return $iconFullName;
+  }
+}
+
+// 生成完整的icon路径
+@function generateImageUrl($iconFullName) {
+  @if(str-index($iconFullName, '.') != null) {
+    @return $iconBaseUrl + $iconFullName
+  } @else {
+    $iconNameLength: str-length($iconFullName);
+    @return $iconBaseUrl + '/' +str-insert($iconFullName, '.png', $iconNameLength + 1);
+  }
+}
+
+@for $i from 1 through length($icons) {
+  $iconName: nth($icons, $i);
+
+  .icon-#{getIconName($iconName)} {
+    @include icon(generateImageUrl($iconName));
+  }
+}

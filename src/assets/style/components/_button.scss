@@ -1,0 +1,27 @@
+// 普通按钮
+%button {
+  width: 80px;
+  height: 30px;
+}
+button, .btn-blue {
+  @extend %button;
+  border-color: transparent;
+  background-color: $blue;
+  color: $white;
+  @extend %border-radius;
+  &:hover {
+    background-color: $blueLight;
+  }
+}
+.btn-orange {
+  @extend %button;
+  background-color: $orange;
+  color: $white;
+  &:hover {
+    background-color: $orangeLight;
+  }
+}
+// .btn-disabled {
+
+// }
+

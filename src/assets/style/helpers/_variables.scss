@@ -1,0 +1,106 @@
+/**
+ * @description scss变量模块
+ *
+ * @author Jaylen-Tse <jaylen.tse@platenogroup.com>
+ */
+
+
+@charset "UTF-8";
+//-----------------------------------------------------
+// scss variables
+//-----------------------------------------------------
+
+
+// font相关
+//-----------------------------------------------------
+$baseFontSize:          14px !default;
+$baseLineHeight:        1.5 !default;
+$baseFontFamily:        "Microsoft Yahei", "微软雅黑", "Helvetica Neue", Helvetica, Tahoma, sans-serif !default;
+$fontYaHei:             "Microsoft Yahei"; //微软雅黑
+
+
+// 元素上下间距
+//-----------------------------------------------------
+$baseGap:               20px !default;
+
+
+// 基本颜色
+// color function : http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+// lighten($color, $amount)
+// darken($color, $amount)
+// opacify($color, $amount)
+// mix($color1, $color2[, $amount])
+//-----------------------------------------------------
+$black:                 #000 !default;
+$gray:                  #DDD !default;
+$white:                 #fff !default;
+
+$red:                   #F20D0D !default;
+$blue:                  #2588EE !default;
+$blueLight:             #3297FF !default;
+$blueDark:              #32425C !default;
+$blueDarker:            #252C3F !default;//深色辅色
+$orange:                #F59F23 !default;
+$orangeLight:           #FFB61C !default;
+
+$primary:               #1D6CAC !default;//主色
+$primaryLight:          #2889D8 !default;//浅色主色
+$secondly:              #32425C !default;//辅色
+$secondlyDarker:        #252C3F !default;//深色辅色
+
+$bgColor:               #E5EAF2 !default;//底色
+$disabledColor:         #DDD    !default;//置灰状态颜色
+
+
+// link
+//-----------------------------------------------------
+// 如果只有一个值则滑过的值为这个值的darken 5%，如果
+// 有两个值则第二个值为滑过的值
+$linkColor:             #08c !default;
+
+
+// scaffolding
+//-----------------------------------------------------
+$bodyBgColor:           $white !default;
+$textColor:             $black !default;
+
+
+// placeholder
+//-----------------------------------------------------
+// 变量分别为：是否输出表单的占位符placeholder样式，文本色
+$placeholder:           true $gray !default;
+
+
+// 交互配色
+// 警告，错误，成功，提示
+//-----------------------------------------------------
+// 每个变量都有三个颜色值，分别为：文本色，背景色，边框色
+$warningColor:               #514721 #FFF6BF #FFD324 !default;
+$errorColor:                 #8A1F11 #FBE3E4 #FBC2C4 !default;
+$successColor:               #264409 #E6EFC2 #C6D880 !default;
+$infoColor:                  #205791 #D5EDF8 #92CAE4 !default;
+
+
+// radius
+//-----------------------------------------------------
+$baseRadius:            3px !default;
+
+
+// z-index
+//-----------------------------------------------------
+$zindexDropdown:        1000 !default;
+$zindexFixedTopbar:     1010 !default;
+$zindexTooltip:         1020 !default;
+$zindexAlert:           1030 !default;
+$zindexModal:           1100 !default;
+
+// 打印样式开关设置
+$printStyleSwitch:      true;
+
+// input\select\textarea样式
+//--------------------------------------------------------
+$inputWidth:            137px           !default;
+$inputHeight:           30px            !default;
+$inputRadius:           $baseRadius     !default;
+$inputBorder:           1px solid $gray !default;
+$inputTextIndent:       10px            !default;
