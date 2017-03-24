@@ -26,8 +26,9 @@ export class AppComponent implements OnInit {
     });
 
     this.confirmService.confirmListener.subscribe(confirm => {
-      console.log(confirm);
-      const result = <Window>window.prompt(confirm.msg);
+      // console.log(confirm);
+
+      const result = window.prompt(confirm.msg);
       if (result === 'ok') {
         confirm.feedback.emit(true);
       } else {
@@ -39,8 +40,9 @@ export class AppComponent implements OnInit {
 
     this.http
       .confirm('活着不好吗', '好的', '不好')
-      .confirm('江信江疑', '信', '疑')
-      .confirm('sb', 's', 'b')
+      .confirm('江信江疑', '信', '疑', true)
+      .confirm('test', '1', '2', false)
+      .confirm('test12', true)
       .post('http://10.100.113.28:8080/pms-web/rest/param/getParamValueByID', {})
       .subscribe(res => {
         console.log(res);

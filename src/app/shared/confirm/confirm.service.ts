@@ -1,14 +1,11 @@
-import { BehaviorSubject } from 'rxjs/Rx';
 import { EventEmitter, Injectable } from '@angular/core';
 
-
-export type ConfirmFeedback = BehaviorSubject<boolean | string> & { emit?: (value: any) => void };
 
 export interface Confirm {
   msg: string;
   ok?: string;
   cancel?: string;
-  feedback: ConfirmFeedback;
+  feedback: EventEmitter<boolean>;
 }
 
 
@@ -32,8 +29,7 @@ export class ConfirmService {
   }
 
   generatePayload(message: string, ok?: string, cancel?: string) {
-    const feedback: ConfirmFeedback = new BehaviorSubject<boolean | string>('confirm event is linstening for feedback');
-    feedback.emit = feedback.next;
+    const feedback: EventEmitter<boolean> = new EventEmitter<boolean>();
     const emitMesaage: Confirm = {
       msg: message,
       feedback
