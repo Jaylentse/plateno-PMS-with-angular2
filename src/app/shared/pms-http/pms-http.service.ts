@@ -1,7 +1,6 @@
-import { request } from 'https';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Scheduler } from 'rxjs/Scheduler';
-import { Confirm, ConfirmService } from './../confirm/confirm.service';
+import { Confirm, ConfirmService } from './../confirm/confirm.service/confirm.service';
 import { HttpInterceptorBackend } from './http-interceptor-backend.service';
 import { Http, RequestOptions, Response } from '@angular/http';
 import { EventEmitter, Injectable } from '@angular/core';
@@ -138,9 +137,7 @@ export class PmsHttp extends Http {
               if (res === true) {
 
                 // 发射下一个confirm
-                setTimeout(() => {
-                  this.confirmService.confirmListener.emit(confirmChain[ i + 1 ]);
-                }, 0);
+                this.confirmService.confirmListener.emit(confirmChain[ i + 1 ]);
 
                 // 返回归并结果
                 return prev;

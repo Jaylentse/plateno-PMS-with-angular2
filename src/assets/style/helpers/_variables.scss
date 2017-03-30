@@ -5,7 +5,7 @@
  */
 
 
-@charset "UTF-8";
+@charset 'UTF-8';
 //-----------------------------------------------------
 // scss variables
 //-----------------------------------------------------
@@ -15,8 +15,8 @@
 //-----------------------------------------------------
 $baseFontSize:          14px !default;
 $baseLineHeight:        1.5 !default;
-$baseFontFamily:        "Microsoft Yahei", "微软雅黑", "Helvetica Neue", Helvetica, Tahoma, sans-serif !default;
-$fontYaHei:             "Microsoft Yahei"; //微软雅黑
+$baseFontFamily:        'Microsoft Yahei', '微软雅黑', 'Helvetica Neue', Helvetica, Tahoma, sans-serif !default;
+$fontYaHei:             'Microsoft Yahei'; //微软雅黑
 
 
 // 元素上下间距
@@ -93,6 +93,7 @@ $zindexFixedTopbar:     1010 !default;
 $zindexTooltip:         1020 !default;
 $zindexAlert:           1030 !default;
 $zindexModal:           1100 !default;
+$zindexMask:            1200 !default;
 
 // 打印样式开关设置
 $printStyleSwitch:      true;

@@ -1,0 +1,8 @@
+<div>
+  <app-popup *ngIf="confirmList.length > 0" (close)="close()">
+    <h3 class="popup-title">请求确认</h3>
+    <section class="popup-content">
+      <p>{{confirmList[0].msg}}</p>
+    </section>
+  </app-popup>
+</div>

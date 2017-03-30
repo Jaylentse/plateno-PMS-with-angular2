@@ -1,0 +1,11 @@
+<div class="mask">
+  <div #popup class="popup" [style.width]="width" [style.height]="popupHeight" [style.transform]="translate">
+    <header #popupHeader>
+      <ng-content select="h3.popup-title"></ng-content>
+      <i class="popup_close icon-close" (click)="closePopup()"></i>
+    </header>
+    <main [style.height]="height">
+      <ng-content select="section.popup-content"></ng-content>
+    </main>
+  </div>
+</div>

@@ -13,7 +13,8 @@ $iconBaseUrl: 'assets/images/sprites';
 $icons: 'pms-logo',
         'loading-background',
         'loading-logo',
-        'loading-spinner';
+        'loading-spinner',
+        'close';
 
 // 生成icon
 @mixin icon ($image-url) {

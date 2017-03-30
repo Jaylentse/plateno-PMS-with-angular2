@@ -10,15 +10,16 @@ import { ShiftsService } from './shifts.service';
 })
 export class LoginComponent implements OnInit {
 
-  private shifts: Array<any> = [];
+  public shifts: Array<any> = [];
 
   constructor(
     private shiftsService: ShiftsService
   ) {
-    this.shifts = this.shiftsService.getShifts();
+
   };
 
   ngOnInit() {
+    this.shifts = this.shiftsService.getShifts();
   }
 
   selectShift(selectedShift) {
