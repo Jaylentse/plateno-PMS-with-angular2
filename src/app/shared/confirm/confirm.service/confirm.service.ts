@@ -1,3 +1,4 @@
+import { asap } from 'rxjs/scheduler/asap';
 import { EventEmitter, Injectable } from '@angular/core';
 
 
@@ -25,14 +26,14 @@ export class ConfirmService {
   confirmListener: EventEmitter<Confirm>;
 
   constructor() {
-    this.confirmListener = new EventEmitter<Confirm>();
+    this.confirmListener = new EventEmitter<Confirm>(true);
   }
 
-  generatePayload(message: string, ok?: string, cancel?: string) {
+  generatePayload(message: string, ok?: string, cancel?: string): Confirm {
     const feedback: EventEmitter<boolean> = new EventEmitter<boolean>();
     const emitMesaage: Confirm = {
       msg: message,
-      feedback
+      feedback: feedback
     };
     if (ok) {
       emitMesaage.ok = ok;

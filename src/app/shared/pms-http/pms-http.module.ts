@@ -1,5 +1,5 @@
-import { LoadingService } from './../loading/loading.service';
-import { ConfirmService } from './../confirm/confirm.service';
+import { LoadingService } from './../loading/loading.service/loading.service';
+import { ConfirmService } from './../confirm/confirm.service/confirm.service';
 import { HttpInterceptor } from './http-interceptor.service';
 import { RequestOptions, XHRBackend } from '@angular/http';
 import { HttpInterceptorBackend } from './http-interceptor-backend.service';
@@ -48,7 +48,6 @@ export class PMSHttpModule {
       this.loading.beginLoading();
       console.log(request);
       next(res => {
-        console.log(res);
         this.loading.finishLoading();
       });
     });
@@ -56,7 +55,7 @@ export class PMSHttpModule {
     // 2. 对抛错统一处理
     this.httpInterceptor.addInterceptor((request, next) => {
       next(res => {
-        if (res.json().statusCode === this.httpInterceptor.errorStatusCode) {
+        if (res.json().statusCode !== this.httpInterceptor.successStatusCode) {
           console.log(res.json());
         }
       });

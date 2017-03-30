@@ -31,9 +31,9 @@ export class HttpInterceptor {
   // 超时due(默认10秒)
   private _timeOut = 10000;
   // 请求成功的状态码（restful接口的statusCode）
-  private _successStatusCode = '00';
-  // 超时状态码
-  public errorStatusCode = Symbol('error');
+  readonly successStatusCode = '00';
+  // 错误状态码
+  readonly errorStatusCode = Symbol('error');
 
   // 拦截器数组
   private _interceptors: Array<Interceptor> = [];
@@ -52,7 +52,6 @@ export class HttpInterceptor {
     const subject = new Subject<Response>();
     const multicasted = response.timeout(this._timeOut).multicast(subject).refCount()
       .catch(err => {
-        console.log(err);
         const responseOptionsArgs: ResponseOptionsArgs = {};
 
         // 根据错误名称响应不同的状态码和错误信息
@@ -64,7 +63,10 @@ export class HttpInterceptor {
             };
             break;
           default:
-          // return Observable.throw(err);
+            responseOptionsArgs.body = {
+              statusCode: this.errorStatusCode,
+              msg: err.message
+            };
         }
 
         if (window.navigator.onLine === false) {
@@ -81,19 +83,17 @@ export class HttpInterceptor {
       });
 
     // 请求响应后的处理逻辑
-    multicasted.subscribe(
+    // 过滤掉请求失败的响应，只返回状态为成功的响应，失败响应在拦截器中统一处理;
+    return multicasted
+      .map(
       res => {
+        const skip = () => {
+        };
         this._responseInterceptors.forEach(responseInterceptor => {
           responseInterceptor(res);
         });
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
-    // 过滤掉请求失败的响应，只返回状态为成功的响应，失败响应在拦截器中统一处理;
-    return multicasted;
+        return res;
+      });
   }
 
   // 添加拦截器
