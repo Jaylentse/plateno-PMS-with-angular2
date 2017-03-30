@@ -22,7 +22,7 @@ export class ConfirmComponent implements OnInit {
   }
 
   close() {
-    this.confirmList[ 0 ].feedback.emit(false);
+    this.confirmList[ 0 ].feedback.emit(true);
     async.schedule(() => this.confirmList.shift());
   }
 
